@@ -1,0 +1,36 @@
+{% extends 'Core/base.html'%}
+<body>
+
+    <div class="container">
+    <div class="container">
+    
+        <div class="row">
+            {% for foro in page_obj %}
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{foro.image.url}}" class="card-img-top" alt="..." height="300px" width="250px"  >
+                    <div class="card-body">
+                      <h5 class="card-title">{{foro.title}}</h5>
+                      <p class="card-text">{{foro.description}}{{noticias.created}}</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+    
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          {% if page_obj.has_previous %} 
+          <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+          {% endif %}
+          {% if page_obj.has_next %}
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a></li>
+          {% endif %}  
+        </ul>
+    </nav>
+    

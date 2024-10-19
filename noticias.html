@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Noticias</h1>
+<ul>
+{% for noticia in noticias %}
+    <li>
+        <h2>{{ noticia.title }}</h2>
+        <img src="{{ noticia.image.url }}" alt="{{ noticia.title }}">
+        <p>{{ noticia.description }}</p>
+        <p>Creado: {{ noticia.created }}</p>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}
